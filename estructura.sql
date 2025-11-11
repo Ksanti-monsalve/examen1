@@ -6,7 +6,7 @@ CREATE TABLE Medicos (
     id_medico INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
-    tipo ENUM('titular', 'interino', 'sustituto') NOT NULL,
+    tipo ('titular', 'interino', 'sustituto') NOT NULL,
     especialidad VARCHAR(50),
     fecha_contratacion DATE NOT NULL
 );
@@ -16,7 +16,7 @@ CREATE TABLE Empleados (
     id_empleado INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
-    tipo ENUM('ATS', 'auxiliar_enfermeria', 'celador', 'administrativo') NOT NULL,
+    tipo ('ATS', 'auxiliar_enfermeria', 'celador', 'administrativo') NOT NULL,
     fecha_contratacion DATE NOT NULL
 );
 
@@ -30,7 +30,7 @@ CREATE TABLE Pacientes (
 CREATE TABLE Horarios (
     id_horario INT AUTO_INCREMENT PRIMARY KEY,
     id_medico INT NOT NULL,
-    dia_semana ENUM('lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo') NOT NULL,
+    dia_semana ('lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo') NOT NULL,
     hora_inicio TIME NOT NULL,
     hora_fin TIME NOT NULL,
     FOREIGN KEY (id_medico) REFERENCES Medicos(id_medico) ON DELETE CASCADE
@@ -53,7 +53,7 @@ CREATE TABLE Vacaciones_Medicos (
     id_medico INT NOT NULL,
     fecha_inicio DATE NOT NULL,
     fecha_fin DATE NOT NULL,
-    tipo ENUM('planificada', 'disfrutada') NOT NULL,
+    tipo ('planificada', 'disfrutada') NOT NULL,
     FOREIGN KEY (id_medico) REFERENCES Medicos(id_medico) ON DELETE CASCADE
 );
 
@@ -63,7 +63,7 @@ CREATE TABLE Vacaciones_Empleados (
     id_empleado INT NOT NULL,
     fecha_inicio DATE NOT NULL,
     fecha_fin DATE NOT NULL,
-    tipo ENUM('planificada', 'disfrutada') NOT NULL,
+    tipo ('planificada', 'disfrutada') NOT NULL,
     FOREIGN KEY (id_empleado) REFERENCES Empleados(id_empleado) ON DELETE CASCADE
 );
 
