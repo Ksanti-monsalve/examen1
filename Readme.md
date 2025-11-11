@@ -84,8 +84,6 @@ ORDER BY num_pacientes DESC
 LIMIT 1;
 ```
 
-Encuentra el médico con más pacientes asignados.
-
 8. **Empleados con más de 10 días de vacaciones disfrutadas**
 
 ```sql
@@ -97,8 +95,6 @@ GROUP BY e.id_empleado, e.nombre, e.apellido
 HAVING dias_disfrutados > 10;
 ```
 
-Filtra empleados con más de 10 días de vacaciones disfrutadas.
-
 9. **Médicos que actualmente están realizando una sustitución**
 
 ```sql
@@ -107,8 +103,6 @@ FROM Medicos m
 JOIN Sustituciones s ON m.id_medico = s.id_medico_sustituto
 WHERE s.fecha_fin IS NULL OR s.fecha_fin >= CURDATE();
 ```
-
-Lista médicos actualmente en sustitución.
 
 10. **Promedio de horas de consulta por médico por día de la semana**
 
@@ -119,15 +113,9 @@ GROUP BY h.dia_semana
 ORDER BY FIELD(h.dia_semana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo');
 ```
 
-Calcula el promedio de horas por día de la semana.
-
 11. **Empleados con mayor número de pacientes atendidos por los médicos bajo su supervisión**
 
-Esta consulta requiere una relación de supervisión que no está modelada en la base de datos actual. Se asumiría una tabla adicional para supervisión.
-
 ```sql
--- Nota: Esta consulta requiere una tabla de supervisión no implementada
--- Ejemplo hipotético:
 SELECT e.nombre, e.apellido, COUNT(DISTINCT a.id_paciente) AS pacientes_supervisados
 FROM Empleados e
 JOIN Supervision sup ON e.id_empleado = sup.id_supervisor
@@ -149,8 +137,6 @@ HAVING num_pacientes > 5
 ORDER BY num_pacientes DESC, horas_semanales DESC;
 ```
 
-Filtra médicos con más de 5 pacientes y muestra horas semanales.
-
 13. **Total de días de vacaciones planificadas y disfrutadas por cada tipo de empleado**
 
 ```sql
@@ -162,8 +148,6 @@ LEFT JOIN Vacaciones_Empleados v ON e.id_empleado = v.id_empleado
 GROUP BY e.tipo;
 ```
 
-Agrupa por tipo de empleado.
-
 14. **Total de pacientes por cada tipo de médico**
 
 ```sql
@@ -172,8 +156,6 @@ FROM Medicos m
 LEFT JOIN Asignaciones a ON m.id_medico = a.id_medico
 GROUP BY m.tipo;
 ```
-
-Cuenta pacientes por tipo de médico.
 
 15. **Total de horas de consulta por médico y día de la semana**
 
