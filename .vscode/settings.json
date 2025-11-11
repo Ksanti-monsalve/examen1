@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "Se crea hasta la 15 consulta",
-        "Termino consultas"
+        "Termino consultas",
+        "modelo"
     ]
 }
