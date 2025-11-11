@@ -167,8 +167,6 @@ GROUP BY m.id_medico, m.nombre, m.apellido, h.dia_semana
 ORDER BY m.nombre, m.apellido, FIELD(h.dia_semana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo');
 ```
 
-Similar a la consulta 6.
-
 16. **Número de sustituciones por tipo de médico**
 
 ```sql
@@ -177,8 +175,6 @@ FROM Medicos m
 LEFT JOIN Sustituciones s ON m.id_medico = s.id_medico_sustituto
 GROUP BY m.tipo;
 ```
-
-Cuenta sustituciones por tipo de médico.
 
 17. **Total de pacientes por médico y por especialidad**
 
@@ -189,8 +185,6 @@ LEFT JOIN Asignaciones a ON m.id_medico = a.id_medico
 GROUP BY m.id_medico, m.nombre, m.apellido, m.especialidad
 ORDER BY m.especialidad, total_pacientes DESC;
 ```
-
-Agrupa por médico y especialidad.
 
 18. **Empleados y médicos con más de 20 días de vacaciones planificadas**
 
@@ -212,8 +206,6 @@ GROUP BY m.id_medico, m.nombre, m.apellido
 HAVING dias_planificados > 20;
 ```
 
-Combina empleados y médicos con más de 20 días planificados.
-
 19. **Médicos con el mayor número de pacientes actualmente en sustitución**
 
 ```sql
@@ -226,8 +218,6 @@ GROUP BY m.id_medico, m.nombre, m.apellido
 ORDER BY pacientes_en_sustitucion DESC;
 ```
 
-Cuenta pacientes de médicos sustituidos actualmente.
-
 20. **Total de horas de consulta por especialidad y día de la semana**
 
 ```sql
@@ -237,5 +227,3 @@ JOIN Horarios h ON m.id_medico = h.id_medico
 GROUP BY m.especialidad, h.dia_semana
 ORDER BY m.especialidad, FIELD(h.dia_semana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo');
 ```
-
-Agrupa horas por especialidad y día.
