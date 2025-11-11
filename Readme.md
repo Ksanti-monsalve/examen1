@@ -9,10 +9,6 @@
 - **Vacaciones**: Vacaciones planificadas y disfrutadas para médicos y empleados.
 - **Asignaciones**: Relación entre pacientes y médicos asignados.
 
-## Consultas
-
-A continuación se presentan las consultas SQL solicitadas, con explicaciones de su lógica y relación con la estructura de la base de datos.
-
 1. **Número de pacientes atendidos por cada médico**
 
 ```sql
